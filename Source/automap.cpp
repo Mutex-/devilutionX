@@ -779,9 +779,9 @@ void DrawAutomapText(const Surface &out)
 	std::time_t t = std::time(nullptr);
 	auto tm = *std::localtime(&t);
 	
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%H:%M");
-    auto str = oss.str();
+	std::ostringstream oss;
+	oss << std::put_time(&tm, "%H:%M");
+	auto str = oss.str();
 	
 	int strLen = str.length();
 
