@@ -775,6 +775,18 @@ void DrawAutomapText(const Surface &out)
 
 	std::string difficultyString = fmt::format(fmt::runtime(_(/* TRANSLATORS: {:s} means: Game Difficulty. */ "Difficulty: {:s}")), difficulty);
 	DrawString(out, difficultyString, linePosition);
+	
+	std::time_t t = std::time(nullptr);
+	auto tm = *std::localtime(&t);
+	
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%H:%M");
+    auto str = oss.str();
+	
+	int strLen = str.length();
+
+	Point timePosition { out.w() - (8 + strLen * 9), 8 };
+	DrawString(out, str, timePosition);
 }
 
 std::unique_ptr<AutomapTile[]> LoadAutomapData(size_t &tileCount)
